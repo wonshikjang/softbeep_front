@@ -22,14 +22,16 @@ const Grid = styled.div`
 `
 
 function App() {
-  let [inputValue, setInputValue] = useState(0)
-  const disValue = 0;
+  let [disValue, setDisValue] = useState(0)
+  let [dirValue, setDirValue] = useState(0)
   const [color,setColor]= useState("");
+  /*
   const onChange= e => {
-    setInputValue(e.target.value);
+    setDisValue(e.target.value);
     //const disValue = disInput.current.target.value;
     
   };
+  */
   /*
   useEffect(()=>{
     if(inputValue < 100 ){
@@ -48,14 +50,17 @@ function App() {
 
     <Container maxWidth="sm">
         
-        <Blocks2 distance={inputValue}/>
+        <Blocks2 distance={disValue} direction = {dirValue}/>
         <input 
-            onChange={(event) => setInputValue(event.target.value)} 
+            onChange={(event) => setDisValue(event.target.value)} 
             placeholder = "거리(m) 를 입력해주세요"
         />
-         
-         <div>{inputValue}</div>    
-         <div>{color}</div>  
+         <input 
+            onChange={(event) => setDirValue(event.target.value)} 
+            placeholder = "방향(1-9(5제외)) 을 입력해주세요"
+        />
+         <div>{disValue}</div>    
+         <div>{dirValue}</div>
     </Container>
   );
 }
