@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 //import Blocks from './Blocks';
 import Blocks2 from './Blocks2';
-import DisDir from './distance';
+
 import React, { useEffect, useRef, useState } from 'react';
 
 const Block = styled.div`
@@ -25,31 +25,40 @@ function App() {
   let [disValue, setDisValue] = useState(0)
   let [dirValue, setDirValue] = useState(0)
   const [color,setColor]= useState("");
-  /*
-  const onChange= e => {
-    setDisValue(e.target.value);
-    //const disValue = disInput.current.target.value;
-    
-  };
-  */
-  /*
-  useEffect(()=>{
-    if(inputValue < 100 ){
-      setColor("Red");
-    }
-    else if (inputValue<300){
-      setColor("Yellow")
-    }
-    else {
-      setColor("Blue")
-    }
-    console.log(color)
-  },[inputValue])
-  */
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.innerHTML = `         
+        function initTmap() {
+            var map = new Tmapv2.Map("TMapApp", {
+                center: new Tmapv2.LatLng(37.566481622437934,126.98502302169841),
+                width: "100%",
+                height: "100%",
+                zoom:15
+            });
+        }
+        
+        initTmap();
+   `;
+    script.type = "text/javascript";
+    script.async = "async";
+    document.head.appendChild(script);
+  }, []);
   return (
 
     <Container maxWidth="sm">
-        
+
+        <div
+      id="TMapApp"
+      style={{
+        width: "890px", 
+        height: "400px",
+        position: "fixed"
+      
+        }}
+      /> 
+
+
         <Blocks2 distance={disValue} direction = {dirValue}/>
         <input 
             onChange={(event) => setDisValue(event.target.value)} 
