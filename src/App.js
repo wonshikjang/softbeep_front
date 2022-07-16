@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Blocks2 from './Blocks2';
 
 import React, { useEffect, useRef, useState } from 'react';
+import MapContainer from './kakao';
 
 const Block = styled.div`
 
@@ -25,8 +26,9 @@ function App() {
   let [disValue, setDisValue] = useState(0)
   let [dirValue, setDirValue] = useState(0)
   const [color,setColor]= useState("");
-
+  /*
   useEffect(() => {
+  
     const script = document.createElement("script");
     script.innerHTML = `         
         function initTmap() {
@@ -44,21 +46,13 @@ function App() {
     script.async = "async";
     document.head.appendChild(script);
   }, []);
+  */
   return (
-
+ 
     <Container maxWidth="sm">
 
-        <div
-      id="TMapApp"
-      style={{
-        width: "890px", 
-        height: "400px",
-        position: "fixed"
-      
-        }}
-      /> 
 
-
+        <MapContainer />
         <Blocks2 distance={disValue} direction = {dirValue}/>
         <input 
             onChange={(event) => setDisValue(event.target.value)} 
@@ -71,6 +65,17 @@ function App() {
          <div>{disValue}</div>    
          <div>{dirValue}</div>
     </Container>
+     /*
+        <div
+      id="TMapApp"
+      style={{
+        width: "890px", 
+        height: "400px",
+        position: "fixed"
+      
+        }}
+      />
+    */
   );
 }
 export default App;
