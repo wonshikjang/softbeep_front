@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Blocks2 from './Blocks2';
 
 import React, { useEffect, useRef, useState } from 'react';
-import MapContainer from './kakao';
+import MapContainer from './map';
 
 const Block = styled.div`
 
